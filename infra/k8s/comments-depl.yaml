@@ -15,8 +15,8 @@ spec:
       containers:
       - name: comments
         image: ibro2002/comments:latest
-        ports:
-          - containerPort: 4005
+        # ports:
+        #   - containerPort: 4005
 # ---
 # apiVersion: v1
 # kind: Service

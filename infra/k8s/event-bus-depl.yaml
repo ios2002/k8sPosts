@@ -15,8 +15,8 @@ spec:
       containers:
       - name: event-bus
         image: ibro2002/event-bus:latest
-        ports:
-          - containerPort: 4005
+        # ports:
+        #   - containerPort: 4005
 # ---
 # apiVersion: v1
 # kind: Service
