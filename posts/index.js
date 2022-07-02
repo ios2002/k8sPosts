@@ -37,14 +37,8 @@ app.post("/posts", async (req, res) => {
 });
 
 app.post("/events", (req, res) => {
-  console.log("Received Event", req.body.type);
-  console.warn(
-    `are equal ${req.body.type} : `,
-    req.body.type === "CommentCreated"
-  );
-  if (req.body.type === "CommentCreated") {
+  if (req.body.type === "CommentModerated") {
     posts[req.body.data.postId].comments.push(req.body.data);
-    console.warn("posts : ", posts);
   }
   res.send({});
 });
