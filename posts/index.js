@@ -22,9 +22,10 @@ app.post("/posts", async (req, res) => {
   posts[id] = {
     id,
     title,
+    comments: [],
   };
 
-  await axios.post("http://ebs:4005/events", {
+  await axios.post("http://event-bus-service:4005/events", {
     type: "PostCreated",
     data: {
       id,
@@ -37,7 +38,9 @@ app.post("/posts", async (req, res) => {
 
 app.post("/events", (req, res) => {
   console.log("Received Event", req.body.type);
-
+  if (req.body.type === "CommentCreated ") {
+    posts[req.body.data.postId].comments.push(req.body.data);
+  }
   res.send({});
 });
 

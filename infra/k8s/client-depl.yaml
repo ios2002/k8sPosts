@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      apps: client
+  template:
+    metadata:
+      labels:
+        apps: client
+    spec:
+      containers:
+      - name: client
+        image: ibro2002/client:latest
+        # ports:
+        #   - containerPort: 4005
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: client-service
+spec:
+  selector:
+    apps: client
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
