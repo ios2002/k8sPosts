@@ -38,8 +38,13 @@ app.post("/posts", async (req, res) => {
 
 app.post("/events", (req, res) => {
   console.log("Received Event", req.body.type);
-  if (req.body.type === "CommentCreated ") {
+  console.warn(
+    `are equal ${req.body.type} : `,
+    req.body.type === "CommentCreated"
+  );
+  if (req.body.type === "CommentCreated") {
     posts[req.body.data.postId].comments.push(req.body.data);
+    console.warn("posts : ", posts);
   }
   res.send({});
 });

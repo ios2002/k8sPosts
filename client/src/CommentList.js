@@ -1,8 +1,8 @@
 import React from "react";
 
 const CommentList = ({ comments }) => {
-  const renderedComments = <li key={0}></li>;
-  if (comments) {
+  let renderedComments = <li key={0}></li>;
+  if (comments && comments.length > 0) {
     renderedComments = comments.map((comment) => {
       let content;
 
